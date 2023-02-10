@@ -1,0 +1,15 @@
+---
+  - name: Starting the liunx containers
+    gather_facts: no
+    hosts: "{{ excution_node }}"
+    become: true
+    tasks:
+      - name: start all containers
+        command: lxc-start -n appserver01
+        command: lxc-start -n appserver02
+        command: lxc-ls -f
+        register: output
+
+      - name: print output
+        debug:
+          var: output.stdout_lines
