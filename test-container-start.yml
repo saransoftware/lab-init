@@ -2,7 +2,8 @@
   - name: Starting the liunx containers
     gather_facts: no
     hosts: "{{ execution_node }}"
-    become: true
+    become: yes
+    become_user: root
     tasks:
       - name: start all containers
         command: lxc-start -n appserver01
