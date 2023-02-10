@@ -4,5 +4,5 @@
     gather_facts: no
     become: true
     tasks:
-      - include: tasks/start_container.yml
-      - include: tasks/start_SP_servers.yml
+      - include_tasks: tasks/start_container.yml
+      - include_tasks: tasks/start_SP_servers.yml

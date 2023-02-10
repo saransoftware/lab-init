@@ -4,7 +4,7 @@
     gather_facts: no
     become: true
     tasks:
-      - include: tasks/stop_container.yml
+      - include_tasks: tasks/stop_container.yml
       - name: Stop TSM Servers
         vars:
           server_name: "{{ item.tsm_server_node }}"
