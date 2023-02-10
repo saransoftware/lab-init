@@ -1,10 +1,9 @@
 ---
   - name: Starting the liunx containers
     gather_facts: no
-    hosts: "{{ execution_node }}"
+    hosts: all
     become: yes
     become_user: root
-    ansible_become_pass: Kyndryl1@Ibmlab12
     tasks:
       - name: start all containers
         command: lxc-start -n appserver01
