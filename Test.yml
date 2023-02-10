@@ -1,0 +1,15 @@
+---
+  - name: Testing flight
+    hosts: "{{ execution_node }}"
+    become: true
+    gather_facts: no
+
+
+    tasks:
+      - name: testing loop variable
+        vars:
+          server_name: "{{ item.tsm_server_node }}"
+          ids: "{{ lookup('env','tsm_app_user') }}"
+          password: "{{ lookup('env','tsm_app_password') }}"
+        include_tasks: tasks/TSM-test.yml
+        loop: "{{ tsm_servers }}"          

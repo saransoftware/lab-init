@@ -1,0 +1,9 @@
+---
+  - name: Close Linux Containers and SP servers
+    hosts: "{{ execution_node }}"
+    gather_facts: no
+    become: yes
+    become_user: root
+    tasks:
+      - include: tasks/stop_container.yml
+      - include: tasks/stop_SP_servers.yml

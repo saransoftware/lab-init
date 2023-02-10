@@ -8,7 +8,7 @@
     ignore_errors: yes
 
   - name: Print the dsmserv output
-    shell: ps -ef | grep -i dsmserv | egrep "tsminst1|tsminst2"
+    shell: ps -ef | grep -i dsmserv | grep -v root
     register: tsm_service_output
 
   - name: Print the dsmserv output in display

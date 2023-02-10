@@ -3,8 +3,8 @@
       shell: lxc-ls -f | awk 'NR > 1 {print $1}'
       register: containers
 
-    - name: Start each container
-      shell: lxc-start -n "{{ item }}"
+    - name: stop each container
+      shell: lxc-stop -n "{{ item }}"
       with_items: "{{ containers.stdout_lines }}"
 
     - name: List out the containers state

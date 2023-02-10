@@ -1,0 +1,7 @@
+---
+  - name: TSM reach testing
+    dsmadmc:
+      command: " select server_name from status "
+      se: "{{ server_name }}"
+      id: "{{ ids }}"
+      pa: "{{ password }}"
