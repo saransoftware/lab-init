@@ -2,8 +2,7 @@
   - name: Start Linux Containers and SP servers
     hosts: "{{ execution_node }}"
     gather_facts: no
-    become: yes
-    become_user: root
+    become: true
     tasks:
       - include: tasks/start_container.yml
       - include: tasks/start_SP_servers.yml

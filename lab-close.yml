@@ -2,8 +2,13 @@
   - name: Close Linux Containers and SP servers
     hosts: "{{ execution_node }}"
     gather_facts: no
-    become: yes
-    become_user: root
+    become: true
     tasks:
       - include: tasks/stop_container.yml
-      - include: tasks/stop_SP_servers.yml
+      - name: Stop TSM Servers
+        vars:
+          server_name: "{{ item.tsm_server_node }}"
+          ids: "{{ lookup('env','tsm_app_user') }}"
+          password: "{{ lookup('env','tsm_app_password') }}"
+        include_tasks: tasks/stop_SP_servers.yml
+        loop: "{{ tsm_servers }}"

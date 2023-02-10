@@ -1,0 +1,8 @@
+---
+  - name: Halting TSM
+    dsmadmc:
+      command: " halt "
+      se: "{{ server_name }}"
+      id: "{{ ids }}"
+      pa: "{{ password }}"
+      dataonly: yes
