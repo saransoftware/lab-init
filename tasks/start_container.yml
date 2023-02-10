@@ -3,6 +3,10 @@
       shell: lxc-ls -f | awk 'NR > 1 {print $1}'
       register: containers
 
+    - name: Print container List
+      debug:
+        msg: "{{ containers.stdout_lines }}"
+
     - name: Start each container
       shell: lxc-start -n "{{ item }}"
       with_items: "{{ containers.stdout_lines }}"
@@ -10,7 +14,7 @@
       become_user: root
 
     - name: List out the containers state
-      shell: lxc-ls -fancy
+      shell: lxc-ls --fancy
       register: container_state
 
     - name: Print out the container state in display
