@@ -1,0 +1,8 @@
+---
+    - name: Get list of containers
+      shell: lxc-ls -f | awk 'NR > 1 {print $1}'
+      register: containers
+
+    - name: Start each container
+      shell: lxc-start -n "{{ item }}"
+      with_items: "{{ containers.stdout_lines }}"
