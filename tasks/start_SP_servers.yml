@@ -1,2 +1,14 @@
 ---
-  
+  - name: Start TSM Services-TSMLAB
+    shell: /opt/tivoli/tsm/server/bin/rc.dsmserv -u tsminst1 -i /home/tsminst1 &
+    ignore_errors: yes
+
+  - name: Start TSM Services- SPLAB
+    shell: /opt/tivoli/tsm/server/bin/rc.dsmserv -u tsminst2 -i /home/tsminst2 &
+    ignore_errors: yes
+
+  - name: Print the dsmserv output
+    shell: ps -ef | grep -i dsmserv
+    register: tsm_service_output
+    debug:
+      msg: "{{ tsm_service_output.stdout_lines }}"
