@@ -5,7 +5,5 @@
     become_user: root
     become: yes
     tasks:
-      - name: Start Containers
       - include: tasks/start_container.yml
-      - name: Start Spectrum protect servers
       - include: tasks/start_SP_servers.yml
