@@ -15,9 +15,9 @@
 
     - name: List out the containers state
       shell: lxc-ls --fancy
-      register: container_state
       become: yes
       become_user: root
+      register: container_state
 
     - name: Print out the container state in display
       debug:
