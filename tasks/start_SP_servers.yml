@@ -10,5 +10,7 @@
   - name: Print the dsmserv output
     shell: ps -ef | grep -i dsmserv
     register: tsm_service_output
+
+  - name: Print the dsmserv output in display
     debug:
       msg: "{{ tsm_service_output.stdout_lines }}"
