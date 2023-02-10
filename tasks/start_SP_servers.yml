@@ -2,17 +2,13 @@
   - name: Start TSM Services-TSMLAB
     shell: /opt/tivoli/tsm/server/bin/rc.dsmserv -u tsminst1 -i /home/tsminst1 &
     ignore_errors: yes
-    become: yes
-    become_user: root
 
   - name: Start TSM Services- SPLAB
     shell: /opt/tivoli/tsm/server/bin/rc.dsmserv -u tsminst2 -i /home/tsminst2 &
     ignore_errors: yes
-    become: yes
-    become_user: root
 
   - name: Print the dsmserv output
-    shell: ps -ef | grep -i dsmserv
+    shell: ps -ef | grep -i dsmserv | egrep "tsminst1|tsminst2"
     register: tsm_service_output
 
   - name: Print the dsmserv output in display
