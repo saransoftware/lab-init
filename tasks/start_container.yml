@@ -1,6 +1,6 @@
 ---
     - name: Get list of containers
-      command: lxc-ls -f | awk 'NR > 1 {print $1}'
+      shell: lxc-ls -f | awk 'NR > 1 {print $1}'
       become: yes
       become_user: root
       register: containers
@@ -10,14 +10,14 @@
         msg: "{{ containers.stdout_lines }}"
 
     - name: Start each container
-      command: lxc-start -n "{{ item }}"
+      shell: lxc-start -n "{{ item }}"
       with_items: "{{ containers.stdout_lines }}"
       become: yes
       become_user: root
 
 
     - name: List out the containers state
-      command: lxc-ls --fancy
+      shell: lxc-ls --fancy
       become: yes
       become_user: root
       register: container_state
