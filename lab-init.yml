@@ -3,5 +3,5 @@
     hosts: "{{ execution_node }}"
     gather_facts: no
     tasks:
-      - include: tasks/start_container.yml
-    #  - include: tasks/start_SP_servers.yml
+    #  - include: tasks/start_container.yml
+      - include: tasks/start_SP_servers.yml
