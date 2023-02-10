@@ -1,7 +1,7 @@
 ---
   - name: Starting the liunx containers
     gather_facts: no
-    hosts: "{{ excution_node }}"
+    hosts: "{{ execution_node }}"
     become: true
     tasks:
       - name: start all containers
