@@ -6,6 +6,8 @@
     - name: Start each container
       shell: lxc-start -n "{{ item }}"
       with_items: "{{ containers.stdout_lines }}"
+      become: yes
+      become_user: root
 
     - name: List out the containers state
       shell: lxc-ls -fancy
